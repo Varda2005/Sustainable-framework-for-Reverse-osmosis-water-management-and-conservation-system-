@@ -108,13 +108,11 @@ void measureDistance(){
     displayData(waterLevelPer);
     Blynk.virtualWrite(VPIN_BUTTON_1, waterLevelPer);
     Blynk.virtualWrite(VPIN_BUTTON_2, (String(distance) + " cm"));
-
-    // Print result to serial monitor
     Serial.print("Distance: ");
     Serial.print(distance);
     Serial.println(" cm");
 
-    if (waterLevelPer < triggerPer){
+  if (waterLevelPer < triggerPer){
       digitalWrite(GreenLed, HIGH);
       if (toggleBuzzer == HIGH){
         digitalWrite(BuzzerPin, HIGH);
@@ -127,7 +125,7 @@ void measureDistance(){
       } 
     }
 
-    if (distance > (fullTankDistance + 5) && waterLevelPer > (triggerPer + 5)){
+   if (distance > (fullTankDistance + 5) && waterLevelPer > (triggerPer + 5)){
       toggleBuzzer = HIGH;
       digitalWrite(BuzzerPin, LOW);
     }        
@@ -195,3 +193,8 @@ void button1Handler(AceButton* button, uint8_t eventType, uint8_t buttonState) {
       break;
   }
 }
+
+
+
+
+
